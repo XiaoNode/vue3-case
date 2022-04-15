@@ -1,11 +1,18 @@
 <template>
-  <p>生命周期console状态
-    {{lifeCycleConsole}} <button @click="lifeCycleConsole=!lifeCycleConsole">switch console</button>
+  <p v-if="!!globalCount">公用状态管理：<b>globalCount: {{ globalCount }}</b>
+  <br/>
+  {{city}}
+  </p>
+  <p>
+    生命周期console状态 {{ lifeCycleConsole }}
+    <button @click="lifeCycleConsole = !lifeCycleConsole">
+      switch console
+    </button>
   </p>
   <p
     v-for="(item, index) in options"
     :key="item"
-    @click=";(selectOptionFun(index)),(alertName(item))"
+    @click="selectOptionFun(index), alertName(item);"
     style="cursor: pointer;
     background: #dcdcdc;"
   >
@@ -21,6 +28,7 @@
 </template>
 
 <script lang="ts">
+import { globalCount,city } from "../hooks/useGlobalCount";
 import {
   defineComponent,
   ref,
@@ -32,7 +40,7 @@ import {
   onBeforeUpdate,
   onUpdated,
   onRenderTracked, // 状态跟踪
-  onRenderTriggered // 状态触发
+  onRenderTriggered, // 状态触发
 } from "vue";
 export default defineComponent({
   name: "App",
@@ -45,7 +53,7 @@ export default defineComponent({
     console.log("1.setup,开始创建组件");
     interface DataProps {
       name: string;
-      lifeCycleConsole:boolean,
+      lifeCycleConsole: boolean;
       options: string[];
       selectOption: string;
       selectOptionFun: (index: number) => void;
@@ -54,7 +62,7 @@ export default defineComponent({
     const data: DataProps = reactive({
       name: "来自3.x的数据",
       // options:[]变为响应式
-      lifeCycleConsole:true,
+      lifeCycleConsole: true,
       options: ref(["土星", "地球", "火星"]),
       selectOption: "", //data.options[0],
       selectOptionFun: (index: number) => {
@@ -73,7 +81,7 @@ export default defineComponent({
       (value) => {
         console.log(value + "!!!");
       }
-    );  
+    );
 
     onBeforeMount(() => {
       consoleMsg("2.组件挂在在页面之前执行，----onBeforeMount");
@@ -81,7 +89,7 @@ export default defineComponent({
 
     onMounted(() => {
       // console.log("3.组件挂载在页面之后执行---onMounted");
-      consoleMsg("3.组件挂载在页面之后执行---onMounted")
+      consoleMsg("3.组件挂载在页面之后执行---onMounted");
     });
 
     onBeforeUpdate(() => {
@@ -102,14 +110,16 @@ export default defineComponent({
       // console.log(event); // 追踪被改变的值，oldValue,newValue
     });
 
-    const consoleMsg=(msg:string)=>{
-      data.lifeCycleConsole? console.log(msg):''
-    }
+    const consoleMsg = (msg: string) => {
+      data.lifeCycleConsole ? console.log(msg) : "";
+    };
     const refData = toRefs(data);
 
     return {
       // data, // data时，template--data.name
       ...refData, // refData时，template--name
+      globalCount,
+      city
     };
   },
 
@@ -126,8 +136,8 @@ export default defineComponent({
     },
   },
   methods: {
-    alertName(val:string) {
-      val==='地球'? alert('来地球了'):''
+    alertName(val: string) {
+      val === "地球" ? alert("来地球了") : "";
     },
   },
   mounted() {

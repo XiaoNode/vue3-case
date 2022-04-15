@@ -2,8 +2,11 @@
   <div class="divcenter">
     选项：
     <select v-model="data.componentName">
-      <option :value="item.name" v-for="(item,index) in data.componentType" :key="item"
-        >{{ index+1 }}--{{ item.value }}</option
+      <option
+        :value="item.name"
+        v-for="(item, index) in data.componentType"
+        :key="item"
+        >{{ index + 1 }}--{{ item.value }}</option
       >
     </select>
     <component
@@ -15,6 +18,11 @@
       <h2>引入模块，可替代mixins,可以引入单个方法</h2>
       <div>{{ nowTime }}</div>
       <div><button @click="getNowTime">显示时间</button></div>
+
+      <br />
+      <p>globalCount: {{ globalCount }}</p>
+      <button @click="addGlobalCount">globalCount ++</button>
+      <button @click="subGlobalCount">globalCount --</button>
     </div>
 
     <div v-if="data.componentName === 'Suspense1'">
@@ -62,6 +70,11 @@ import {
 } from "vue";
 import { eventBus } from "@ai-zen/event-bus";
 import { timeData } from "./hooks/useNowTime";
+import {
+  globalCount,
+  addGlobalCount,
+  subGlobalCount,
+} from "./hooks/useGlobalCount";
 import { nowTime, getNowTime } from "./hooks/useNowTimeSingle";
 import StudyOne from "./components/StudyOne.vue";
 import Contrast from "./components/Contrast.vue";
@@ -150,6 +163,9 @@ export default defineComponent({
       timeData,
       nowTime,
       getNowTime,
+      globalCount,
+      addGlobalCount,
+      subGlobalCount
     };
   },
   directives: {
