@@ -82,6 +82,8 @@ import {
 } from "./hooks/useGlobalCount";
 import { nowTime, getNowTime } from "./hooks/useNowTimeSingle";
 import useMousePosition from "./hooks/useMousePosition";
+// import useA as nameB from '/hooks/useA'
+import useMousePosition from "./hooks/useMousePosition";
 import StudyOne from "./components/StudyOne.vue";
 import Contrast from "./components/Contrast.vue";
 import StudyThree from "./components/StudyThree.vue";
