@@ -17,7 +17,7 @@
     <pre class="db">
         <code class="language-js">
         Vue.js 2--------------Vue.js 3
-        <span class="hljs-function"><span class="hljs-title">beforeCreate</span>  -&gt;</span> setup()
+        <span class="hljs-function"><span class="hljs-title">beforeCreate</span>  -&gt;</span> setup()  第一个钩子，在beforeCreate created之前
         <span class="hljs-function"><span class="hljs-title">created</span>       -&gt;</span> setup()
         <span class="hljs-function"><span class="hljs-title">beforeMount</span>   -&gt;</span> onBeforeMount
         <span class="hljs-function"><span class="hljs-title">mounted</span>       -&gt;</span> onMounted

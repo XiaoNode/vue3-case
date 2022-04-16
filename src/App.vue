@@ -23,6 +23,11 @@
       <p>globalCount: {{ globalCount }}</p>
       <button @click="addGlobalCount">globalCount ++</button>
       <button @click="subGlobalCount">globalCount --</button>
+
+      <br />
+      <br />
+      另一个hooks:
+      {{ mousePosition }}
     </div>
 
     <div v-if="data.componentName === 'Suspense1'">
@@ -76,6 +81,7 @@ import {
   subGlobalCount,
 } from "./hooks/useGlobalCount";
 import { nowTime, getNowTime } from "./hooks/useNowTimeSingle";
+import useMousePosition from "./hooks/useMousePosition";
 import StudyOne from "./components/StudyOne.vue";
 import Contrast from "./components/Contrast.vue";
 import StudyThree from "./components/StudyThree.vue";
@@ -165,7 +171,8 @@ export default defineComponent({
       getNowTime,
       globalCount,
       addGlobalCount,
-      subGlobalCount
+      subGlobalCount,
+      ...useMousePosition(),
     };
   },
   directives: {

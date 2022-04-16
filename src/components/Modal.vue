@@ -8,9 +8,35 @@
       </p>
     </div>
   </teleport>
+
+  <div>
+    <Node/>
+  </div>
+
 </template>
-<script lang="ts">
-export default {};
+
+<script lang="ts" setup>
+// render function
+import { h, createApp} from 'vue'
+const list = [
+  { name: "xxx", code: 1 },
+  { name: "yyy", code: 2 },
+];
+
+const Node = {
+  render() {
+    // v-for"item in list"  函数渲染 --- 模板渲染
+    return list.map((item) => {
+      return h("div", { key: item.code }, item.name);
+    });
+  },
+};
+
+createApp({
+  components:{
+    Node,
+  }
+}) 
 </script>
 <style>
 .center {

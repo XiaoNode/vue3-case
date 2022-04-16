@@ -1,7 +1,7 @@
 const comArr = [
   { value: "实例", name: "StudyOne" },
   { value: "常规结构对比", name: "Contrast" },
-  { value: "引入模块，可替代mixins,可以引入单个方法", name: "mokuai" },
+  { value: "hooks，可替代mixins,可以引入单个方法", name: "mokuai" },
   // { value: "模拟接口请求", name: "StudyThree" },
   { value: "Object.defineProperty VS Proxy", name: "Proxy" },
   { value: "teleport节点挂载", name: "Modal" },

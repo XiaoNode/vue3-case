@@ -1,7 +1,8 @@
 <template>
-  <p v-if="!!globalCount">公用状态管理：<b>globalCount: {{ globalCount }}</b>
-  <br/>
-  {{city}}
+  <p v-if="!!globalCount">
+    公用状态管理：<b>globalCount: {{ globalCount }}</b>
+    <br />
+    {{ city }}
   </p>
   <p>
     生命周期console状态 {{ lifeCycleConsole }}
@@ -12,7 +13,7 @@
   <p
     v-for="(item, index) in options"
     :key="item"
-    @click="selectOptionFun(index), alertName(item);"
+    @click="selectOptionFun(index), alertName(item)"
     style="cursor: pointer;
     background: #dcdcdc;"
   >
@@ -28,13 +29,14 @@
 </template>
 
 <script lang="ts">
-import { globalCount,city } from "../hooks/useGlobalCount";
+import { globalCount, city } from "../hooks/useGlobalCount";
 import {
   defineComponent,
   ref,
   reactive,
   toRefs,
   watch,
+  watchEffect,
   onMounted,
   onBeforeMount,
   onBeforeUpdate,
@@ -76,12 +78,18 @@ export default defineComponent({
       return something + "";
     };
 
-    watch(
-      () => data.name,
-      (value) => {
-        console.log(value + "!!!");
-      }
-    );
+    // 需指定值
+    // watch(
+    //   () => data.name,
+    //   (value) => {
+    //     console.log(value + "!!!");
+    //   }
+    // );
+    
+    // watchEffect ==> onStateChanged
+    watchEffect(() => {
+      console.log(data.name);
+    });
 
     onBeforeMount(() => {
       consoleMsg("2.组件挂在在页面之前执行，----onBeforeMount");
@@ -119,7 +127,7 @@ export default defineComponent({
       // data, // data时，template--data.name
       ...refData, // refData时，template--name
       globalCount,
-      city
+      city,
     };
   },
 
