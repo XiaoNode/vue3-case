@@ -42,6 +42,15 @@ export default defineComponent({
   },
 });    
   </pre>
+  <hr/>
+  <pre>
+    ...
+    dataA
+    function1
+    function6
+    function11
+    ...
+  </pre>  
 </template>
 <script lang="ts">
 import { defineComponent, reactive, toRefs, onMounted, computed,watch } from "vue";

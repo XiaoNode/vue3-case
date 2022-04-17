@@ -1,10 +1,11 @@
 <template>
   <div class="content">
-    Vue.js v2 data count:{{ count }} <button @click="addCount">add count</button>
+    Vue.js v2 data count:{{ count }}
+    <button @click="addCount">add count</button>
     <p>computed double count:{{ doubleCount }}</p>
   </div>
-  <hr/>
-  <pre>
+  <hr />
+  <pre style="height: 557px;">
 export default {
   data() {
     return {
@@ -34,6 +35,21 @@ export default {
     },
   },
 };
+  </pre>
+  <hr/>
+  <pre>
+    ...
+    dataA
+    ...
+    ...
+    function1
+    ...
+    ...
+    function6
+    ...
+    ...
+    function11
+    ...
   </pre>
 </template>
 

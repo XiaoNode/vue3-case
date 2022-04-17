@@ -23,6 +23,6 @@ export default function() {
   });
 
   return {
-    mousePosition,
+    mousePosition
   };
 }

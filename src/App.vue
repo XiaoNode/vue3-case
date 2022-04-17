@@ -14,7 +14,7 @@
       v-if="data.componentName !== 'Father' && data.componentName !== 'Attr'"
     />
 
-    <div v-if="data.componentName === 'mokuai'">
+    <div v-if="data.componentName === 'Hooks'">
       <h2>引入模块，可替代mixins,可以引入单个方法</h2>
       <div>{{ nowTime }}</div>
       <div><button @click="getNowTime">显示时间</button></div>
@@ -26,8 +26,16 @@
 
       <br />
       <br />
-      另一个hooks:
+      另一个hooks: mouse position:
       {{ mousePosition }}
+      <br />
+      <p>
+        1.mousePosition--》return--》 useMousePosition --》
+        ./hooks/useMousePosition
+      </p>
+      <p>
+        2.mousePosition--》???
+      </p>
     </div>
 
     <div v-if="data.componentName === 'Suspense1'">
@@ -66,6 +74,7 @@
 
 <script lang="ts">
 import {
+  ref,
   defineComponent,
   reactive,
   onErrorCaptured,
@@ -83,7 +92,6 @@ import {
 import { nowTime, getNowTime } from "./hooks/useNowTimeSingle";
 import useMousePosition from "./hooks/useMousePosition";
 // import useA as nameB from '/hooks/useA'
-import useMousePosition from "./hooks/useMousePosition";
 import StudyOne from "./components/StudyOne.vue";
 import Contrast from "./components/Contrast.vue";
 import StudyThree from "./components/StudyThree.vue";
@@ -166,6 +174,8 @@ export default defineComponent({
 
     provide("house2", "上海房产");
 
+    const { mousePosition } = useMousePosition();
+
     return {
       data,
       timeData,
@@ -174,7 +184,8 @@ export default defineComponent({
       globalCount,
       addGlobalCount,
       subGlobalCount,
-      ...useMousePosition(),
+      // ...useMousePosition(),
+      mousePosition,
     };
   },
   directives: {
