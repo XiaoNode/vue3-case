@@ -15,7 +15,7 @@
     />
 
     <div v-if="data.componentName === 'Hooks'">
-      <h2>引入模块，可替代mixins,可以引入单个方法</h2>
+      <h2>引入hooks，可替代mixins,可以引入单个方法</h2>
       <div>{{ nowTime }}</div>
       <div><button @click="getNowTime">显示时间</button></div>
 
@@ -29,12 +29,16 @@
       另一个hooks: mouse position:
       {{ mousePosition }}
       <br />
+      {{x1}}--{{y1}}
       <p>
         1.mousePosition--》return--》 useMousePosition --》
         ./hooks/useMousePosition
       </p>
       <p>
         2.mousePosition--》???
+      </p>
+      <p>
+        3.const {x:x1, y:y1} =mousePosition, error,解构会使得mousePosition失去响应式
       </p>
     </div>
 
@@ -81,6 +85,7 @@ import {
   provide,
   watch,
   onMounted,
+  toRefs
 } from "vue";
 import { eventBus } from "@ai-zen/event-bus";
 import { timeData } from "./hooks/useNowTime";
@@ -176,6 +181,10 @@ export default defineComponent({
 
     const { mousePosition } = useMousePosition();
 
+    // const {x:x1, y:y1} =mousePosition
+
+    const {x:x1, y:y1} =toRefs(mousePosition)
+
     return {
       data,
       timeData,
@@ -186,6 +195,8 @@ export default defineComponent({
       subGlobalCount,
       // ...useMousePosition(),
       mousePosition,
+      x1,
+      y1
     };
   },
   directives: {
