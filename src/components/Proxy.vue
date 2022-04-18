@@ -27,22 +27,6 @@ class Oberver{
         }
     }
 }
-let people={
-    name: 'jay',
-    age:22
-}
-let app=new Oberver(people)
-app.age=33
-console.log(app.age)
-app.height=188
-console.log(app.height)
-
-===>
-你设置了age
-你访问了age
-undefined
-188
-undefined
     </pre>
     <pre class="obj2">
 Vue3 new Proxy(data, {get(key) { }, set(key, value) { },})
@@ -63,14 +47,6 @@ let proxy=new Proxy(people,{
         Reflect.set(target,key,value,receiver)
     }
 })
-people.age=33
-console.log(people.age)
-people.height=188
-console.log(people.height)
-
-===>
-33
-188
     </pre>
   </div>
 </template>
