@@ -29,7 +29,7 @@
       另一个hooks: mouse position:
       {{ mousePosition }}
       <br />
-      {{x1}}--{{y1}}
+      {{ x1 }}--{{ y1 }}
       <p>
         1.mousePosition--》return--》 useMousePosition --》
         ./hooks/useMousePosition
@@ -38,7 +38,8 @@
         2.mousePosition--》???
       </p>
       <p>
-        3.const {x:x1, y:y1} =mousePosition, error,解构会使得mousePosition失去响应式
+        3.const {x:x1, y:y1} =mousePosition,
+        error,解构会使得mousePosition失去响应式
       </p>
     </div>
 
@@ -85,7 +86,7 @@ import {
   provide,
   watch,
   onMounted,
-  toRefs
+  toRefs,
 } from "vue";
 import { eventBus } from "@ai-zen/event-bus";
 import { timeData } from "./hooks/useNowTime";
@@ -101,6 +102,8 @@ import StudyOne from "./components/StudyOne.vue";
 import Contrast from "./components/Contrast.vue";
 import StudyThree from "./components/StudyThree.vue";
 import Proxy from "./components/Proxy.vue";
+import Reactive1 from "./components/Reactive1.vue";
+import Reactive2 from "./components/Reactive2.vue";
 import Modal from "./components/Modal.vue";
 import AsyncShow from "./components/AsyncShow.vue";
 import LifeCycle from "./components/LifeCycle.vue";
@@ -120,6 +123,8 @@ export default defineComponent({
     Contrast,
     StudyThree,
     Proxy,
+    Reactive1,
+    Reactive2,
     Modal,
     AsyncShow,
     LifeCycle,
@@ -154,7 +159,7 @@ export default defineComponent({
     const data: DataProps = reactive({
       componentType: comArr,
       componentNumber: 0,
-      componentName: "StudyOne",
+      componentName: "Reactive2", // Reactive1
       house: "北京房产",
       name: "小明",
       age: 18,
@@ -183,7 +188,7 @@ export default defineComponent({
 
     // const {x:x1, y:y1} =mousePosition
 
-    const {x:x1, y:y1} =toRefs(mousePosition)
+    const { x: x1, y: y1 } = toRefs(mousePosition);
 
     return {
       data,
@@ -196,7 +201,7 @@ export default defineComponent({
       // ...useMousePosition(),
       mousePosition,
       x1,
-      y1
+      y1,
     };
   },
   directives: {

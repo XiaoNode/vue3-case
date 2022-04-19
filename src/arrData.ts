@@ -4,6 +4,8 @@ const comArr = [
   { value: "hooks，可替代mixins,可以引入单个方法", name: "Hooks" },
   // { value: "模拟接口请求", name: "StudyThree" },
   { value: "Object.defineProperty VS Proxy", name: "Proxy" },
+  { value: "Reactive 1, effect", name: "Reactive1" },
+  { value: "Reactive 2, Proxy", name: "Reactive2" },
   { value: "teleport节点挂载&函数渲染", name: "Modal" },
   { value: "Suspense异步", name: "Suspense1" },
   { value: "生命周期", name: "LifeCycle" },
