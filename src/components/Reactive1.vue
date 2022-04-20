@@ -3,6 +3,7 @@
   <br />
   total=price*num
   <br/>
+  总价=单价*数量
   <!-- 购物车包含多商品，数量，总价，税费，重量，是否包邮，都需要effect -->
 </template>
 
@@ -17,7 +18,9 @@ console.log(`price:${price},num:${num},total:${t}`)
 num=3
 console.log(`price:${price},num:${num},total:${t}`)
 
-// let effect = () => {  // 相关运算
+
+// effect,效果，作用=》潜在运算关系 相关运算
+// let effect = () => {
 //   total = price * num;
 // };
 

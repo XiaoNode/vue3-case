@@ -21,7 +21,15 @@
     A WeakMap is a collection of key/value pairs whose keys must be objects,
     with values of any arbitrary JavaScript type.
   </code>
-  <code> </code>
+  <p>
+    price/num 改变,触发WeakMap集合中对应的effect运行
+  </p>
+  <p>
+    <!-- product==> Proxy(product,handlers),代理拦截，get/set时候按条件执行effect -->
+  </p>
+  <p>
+    <!-- Vue ==> hooks+ reactive+vd rander+ ssr+ watchEffect+ IE 支持.... -->
+  </p>
 </template>
 
 <script setup>
@@ -84,8 +92,8 @@ function reactive(target) {
   return new Proxy(target, handlers);
 }
 
-// let product = { price: 3, num: 2 };
-let product = reactive({ price: 3, num: 2 });
+let product = { price: 3, num: 2 };
+// let product = reactive({ price: 3, num: 2 });
 let total = 0;
 
 // 相关运算

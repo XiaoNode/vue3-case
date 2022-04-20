@@ -13,6 +13,12 @@
     <h2>函数渲染</h2>
     <Node />
   </div>
+  <hr />
+  <!-- <div v-for="item in list" :key="item.code" class="xx">
+    <p v-for="it in item.children" :key="it.code" class="sp">
+      {{it.name}}
+    </p>
+  </div> -->
 </template>
 
 <script lang="ts" setup>
