@@ -8,6 +8,10 @@
       </p>
     </div>
   </teleport>
+  <!-- <teleport to="modal">
+<teleport to=".modal">
+<teleport to="[data-modal]">
+<teleport :to="modal">   -->
 
   <div>
     <h2>函数渲染</h2>
@@ -47,9 +51,13 @@ const Node = {
   render() {
     // v-for"item in list"  函数渲染 --- 模板渲染
     return list.map((item) => {
-      return h("div", { key: item.code , class:'xx'}, item.children.map(it=>{
-        return h('p',{ class:"sp"},it.name)
-      }));
+      return h(
+        "div",
+        { key: item.code, class: "xx" },
+        item.children.map((it) => {
+          return h("p", { class: "sp" }, it.name);
+        })
+      );
     });
   },
 };
@@ -72,7 +80,7 @@ createApp({
   margin-left: -100px;
   margin-top: -100px;
 }
-.sp{
+.sp {
   background: #dcdcdc;
 }
 </style>

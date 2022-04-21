@@ -10,6 +10,11 @@
     <!-- 跨级传递数据:通过在中间组件绑定$attrs属性，Grandson组件可以直接获取到App组件中传递下来的props-->
     <!-- props与attrs属性传递互斥 vue3$listeners已弃用 -->
     <Grandson v-bind="$attrs" :disabled="false" />
+    <hr />
+    <p>1.通过props和$emit的方式</p>
+    <p>2.Vuex的方式,大材小用,仅仅是想实现组件之间的一个数据传递，并非数据共享的概念</p>
+    <p>3. V2中配合attr&listeners,V3中调整</p>
+    
   </div>
 </template>
 <script lang="ts">

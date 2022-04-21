@@ -159,7 +159,7 @@ export default defineComponent({
     const data: DataProps = reactive({
       componentType: comArr,
       componentNumber: 0,
-      componentName: "Reactive2", // Reactive1
+      componentName: "StudyOne", // Reactive1
       house: "北京房产",
       name: "小明",
       age: 18,
@@ -179,6 +179,9 @@ export default defineComponent({
       () => data.componentName,
       (value) => {
         console.log(value);
+      },
+      {
+        immediate: true, // 立即执行effect
       }
     );
 
@@ -186,6 +189,7 @@ export default defineComponent({
 
     const { mousePosition } = useMousePosition();
 
+    // 解构会使对象失去reactive
     // const {x:x1, y:y1} =mousePosition
 
     const { x: x1, y: y1 } = toRefs(mousePosition);
