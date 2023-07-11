@@ -181,7 +181,7 @@ export default defineComponent({
         console.log(value);
       },
       {
-        immediate: true, // 立即执行effect
+        immediate: true, // 立即执行effect.
       }
     );
 
